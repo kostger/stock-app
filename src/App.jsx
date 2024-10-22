@@ -6,16 +6,24 @@ import { Route, Routes } from "react-router-dom";
 import IndividualStockInfo from "./pages/IndividualStockInfo";
 import Navbar from "./components/Navbar";
 import { ScrollBar } from "./components/ScrollBar";
-
+import AboutScreen from "./pages/AboutScreen";
+import Footer from "./components/Footer";
+import WatchlistScreen from "./pages/WatchlistScreen";
 function App() {
   return (
-    <div className="App">
+    <div className="flex flex-col min-h-screen">
       <Navbar />
       <ScrollBar />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/stock/:symbol" element={<IndividualStockInfo />} />
-      </Routes>
+      <main className="flex-grow">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/stock/:symbol" element={<IndividualStockInfo />} />
+          <Route path="/about" element={<AboutScreen />} />
+          <Route path="/watchlist" element={<WatchlistScreen />} />
+          <Route path="*" element={<h1>Not Found</h1>} />
+        </Routes>
+      </main>
+      <Footer />
     </div>
   );
 }

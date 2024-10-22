@@ -17,9 +17,11 @@ export const StockGraph = ({ data }) => {
   }));
 
   return (
-    <div>
-      <h2>Stock Price Graph</h2>
-      <ResponsiveContainer minHeight={400} minWidth={1000}>
+    <div className="p-4">
+      <h2 className="text-xl md:text-2xl font-semibold mb-4">
+        Stock Price Graph
+      </h2>
+      <ResponsiveContainer minHeight={300} width="100%">
         <LineChart data={formattedData}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="date" />
