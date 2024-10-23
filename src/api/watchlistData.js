@@ -1,5 +1,6 @@
 import axios from "axios";
-const WATCHLIST_BASE_URL = "http://localhost:3000/stocks";
+const WATCHLIST_BASE_URL =
+  "https://my-stock-server-production.up.railway.app/stocks";
 
 export const fetchWatchlistData = async () => {
   try {

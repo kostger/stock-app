@@ -6,39 +6,11 @@ import MarketMovers from "../components/MarketMovers";
 import MarketLosers from "../components/MarketLosers";
 import VideoPlayer from "../components/VideoPlayer";
 import GraphData from "../components/GraphData";
+import CryptoWidget from "../components/CryptoWidget";
+import { motion } from "framer-motion";
 function HomePage() {
-  const [stockData, setStockData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const getStockData = async () => {
-      try {
-        setLoading(true);
-        const data = await fetchStockData();
-        setStockData(data);
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    getStockData();
-  }, []);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
-
   return (
-    <div className="flex flex-col justify-center items-center  ">
-      <h1 className="font-bold text-5xl text-blue-400">Stock Information</h1>
-      <StockInfo stockData={stockData} />
+    <div className="flex flex-col justify-center items-center bg-white dark:bg-gray-900 text-black dark:text-white ">
       <hr
         style={{
           width: "100%",
@@ -50,12 +22,28 @@ function HomePage() {
       />
       <div className="w-full flex flex-col justify-evenly items-start md:flex-row">
         <div className="flex flex-col justify-center items-center w-full gap-2">
-          <MarketMovers />
-          <MarketLosers />
+          <motion.div
+            className="w-full"
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1 }}
+          >
+            <MarketMovers />
+          </motion.div>
+          <motion.div
+            className="w-full"
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1 }}
+          >
+            <MarketLosers />
+          </motion.div>
           <div className="w-full flex h-full flex-col justify-evenly items-center md:flex-row ">
             <GraphData />
+
             <VideoPlayer url={"https://www.youtube.com/watch?v=NGaSWrOQrlU"} />
           </div>
+          {/* <CryptoWidget /> */}
         </div>
 
         <NewsContainer />

@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 export const ScrollBar = () => {
   const showcasedIndices = [
@@ -57,13 +58,15 @@ export const ScrollBar = () => {
         display: "flex",
         overflowX: "auto",
         whiteSpace: "nowrap",
-        width: "100%", // Set the desired width for your scrollbar
-        backgroundColor: "#f4f4f4", // Optional: Change background color
+        width: "100%",
       }}
+      className="scroll-container bg-white dark:bg-gray-800 p-4 text-black dark:text-white"
     >
       {showcasedIndices.map((e, index) => (
         <Link key={index} to={`/stock/${e.symbol}`}>
-          <div
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
             style={{
               minWidth: "250px", // Set a minimum width for each item
               padding: "10px",
@@ -83,7 +86,7 @@ export const ScrollBar = () => {
             <p style={{ color: e.change === "up" ? "green" : "red" }}>
               {e.price}
             </p>
-          </div>
+          </motion.button>
         </Link>
       ))}
     </div>

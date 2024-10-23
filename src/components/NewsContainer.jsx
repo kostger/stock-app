@@ -25,7 +25,7 @@ const NewsContainer = () => {
           <li key={index} className="mb-4">
             <a
               href={item.link}
-              className="flex flex-col md:flex-row justify-between items-start border border-gray-300 rounded-lg shadow-md p-4 transition duration-200 hover:bg-gray-100"
+              className="flex flex-col md:flex-row justify-between items-start border border-gray-300 rounded-lg shadow-md p-4 transition duration-200 hover:bg-gray-100 dark:hover:bg-slate-700"
               target="_blank"
               rel="noopener noreferrer"
             >

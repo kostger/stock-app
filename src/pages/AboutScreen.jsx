@@ -2,7 +2,7 @@ import React from "react";
 
 function AboutScreen() {
   return (
-    <div className="flex flex-col justify-center items-center p-10 gap-10">
+    <div className="flex flex-col justify-center items-center p-10 gap-10 bg-white dark:bg-gray-900 text-black dark:text-white">
       <h1 className="text-[30px]">About Screen</h1>
       <p className="align-middle w-full ">
         MyStock App is a platform for real-time financial data and the latest

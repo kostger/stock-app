@@ -7,6 +7,7 @@ import { postWatchlistData } from "../api/watchlistData";
 import AddIcon from "@mui/icons-material/Add";
 import { fetchStockQuote } from "../api/twelveData";
 import CheckIcon from "@mui/icons-material/Check";
+import { motion } from "framer-motion";
 
 function IndividualStockInfo() {
   const { symbol } = useParams();

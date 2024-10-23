@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { fetchWatchlistData, deleteWatchlistData } from "../api/watchlistData";
 import { Link } from "react-router-dom";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
-
+import { motion } from "framer-motion";
 function WatchlistScreen() {
   const [watchlistData, setWatchlistData] = useState([]);
   const [deleteMode, setDeleteMode] = useState(false);
@@ -34,7 +34,7 @@ function WatchlistScreen() {
   };
 
   return (
-    <div className="p-4">
+    <div className="p-4 bg-white dark:bg-gray-900 text-black dark:text-white">
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-semibold mb-4">My Watchlist</h1>
         <button
@@ -46,10 +46,15 @@ function WatchlistScreen() {
           {deleteMode ? "Cancel" : "Remove Stocks"}
         </button>
       </div>
-      <div className="overflow-x-auto">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1 }}
+        className="overflow-x-auto"
+      >
         <table className="min-w-full border-collapse border border-gray-200">
           <thead>
-            <tr className="bg-gray-200">
+            <tr className="bg-gray-200 dark:bg-slate-800">
               <th className="border border-gray-300 p-2 text-left">Symbol</th>
               <th className="border border-gray-300 p-2 text-left">Close</th>
               <th className="border border-gray-300 p-2 text-left">Open</th>
@@ -65,7 +70,10 @@ function WatchlistScreen() {
           <tbody>
             {watchlistData.length > 0 ? (
               watchlistData.map((item) => (
-                <tr key={item.id} className="hover:bg-gray-100">
+                <tr
+                  key={item.id}
+                  className="hover:bg-gray-100 dark:hover:bg-slate-700"
+                >
                   <td className="border border-gray-300 p-2">
                     <Link to={`/stock/${item.symbol}`}>{item.symbol}</Link>
                   </td>
@@ -109,7 +117,7 @@ function WatchlistScreen() {
             )}
           </tbody>
         </table>
-      </div>
+      </motion.div>
     </div>
   );
 }
