@@ -39,9 +39,9 @@ function WatchlistScreen() {
         <h1 className="text-2xl font-semibold mb-4">My Watchlist</h1>
         <button
           onClick={handleToggleDeleteMode}
-          className={`bg-${
-            deleteMode ? "green" : "red"
-          }-500 text-white px-4 py-2 rounded-md`}
+          className={`${
+            deleteMode ? "bg-green-500" : "bg-red-500"
+          } text-white px-4 py-2 rounded-md`}
         >
           {deleteMode ? "Cancel" : "Remove Stocks"}
         </button>
