@@ -8,6 +8,7 @@ import AddIcon from "@mui/icons-material/Add";
 import { fetchStockQuote } from "../api/twelveData";
 import CheckIcon from "@mui/icons-material/Check";
 import { motion } from "framer-motion";
+import Chatbot from "../components/Chatbot";
 
 function IndividualStockInfo() {
   const { symbol } = useParams();
@@ -131,7 +132,9 @@ function IndividualStockInfo() {
                 {quoteData.fifty_two_week.low}
               </p>
             </div>
-            <div>Ask the bot</div>
+            <div className="p-32">
+              <Chatbot stockName={quoteData.name} />
+            </div>
             <h1 className="text-xl md:text-2xl font-semibold mt-4 mb-2">
               Stock History
             </h1>

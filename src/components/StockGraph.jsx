@@ -17,7 +17,7 @@ export const StockGraph = ({ data }) => {
   }));
 
   return (
-    <div className="p-4">
+    <div className="p-4 z-0">
       <h2 className="text-xl md:text-2xl font-semibold mb-4">
         Stock Price Graph
       </h2>

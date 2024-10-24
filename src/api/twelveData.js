@@ -1,9 +1,9 @@
 import axios from "axios";
 
 const API_BASE_URL = "https://api.twelvedata.com";
-// const API_KEY = import.meta.env.VITE_TWELVE_KEY;
+const API_KEY = import.meta.env.VITE_TWELVE_KEY;
 
-const API_KEY = "e66d30f69d04446f860713324751732e";
+// const API_KEY = "e66d30f69d04446f860713324751732e";
 export const fetchStockQuote = async (symbol) => {
   try {
     const response = await axios.get(`${API_BASE_URL}/quote`, {
