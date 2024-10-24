@@ -131,6 +131,7 @@ function IndividualStockInfo() {
                 {quoteData.fifty_two_week.low}
               </p>
             </div>
+            <div>Ask the bot</div>
             <h1 className="text-xl md:text-2xl font-semibold mt-4 mb-2">
               Stock History
             </h1>
