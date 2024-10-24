@@ -3,10 +3,10 @@ import React from "react";
 const StockDataDisplay = ({ data }) => {
   return (
     <div className="overflow-x-auto max-w-full">
-      <table className="min-w-full border-collapse border border-gray-200">
+      <table className="min-w-full border-collapse border border-gray-200 dark:border-slate-600">
         <thead>
-          <tr className="bg-gray-200">
-            <th className="border border-gray-300 p-2 text-left">Date</th>
+          <tr className="bg-gray-200 dark:bg-slate-600">
+            <th className="border border-gray-300  p-2 text-left">Date</th>
             <th className="border border-gray-300 p-2 text-left">Close</th>
             <th className="border border-gray-300 p-2 text-left">Open</th>
             <th className="border border-gray-300 p-2 text-left">High</th>
@@ -17,7 +17,10 @@ const StockDataDisplay = ({ data }) => {
         </thead>
         <tbody>
           {data.values.map((item, index) => (
-            <tr key={index} className="hover:bg-gray-100">
+            <tr
+              key={index}
+              className="hover:bg-gray-100 dark:hover:bg-slate-400"
+            >
               <td className="border border-gray-300 p-2">{item.datetime}</td>
               <td
                 className={`border border-gray-300 p-2 ${

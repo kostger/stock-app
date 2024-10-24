@@ -50,6 +50,9 @@ const Navbar = () => {
           <a href="/contact" className="text-white hover:text-gray-300">
             Contact
           </a>
+          <div className="py-2">
+            <ThemeToggle />
+          </div>
         </div>
       )}
     </nav>

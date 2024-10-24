@@ -26,7 +26,7 @@ export const StockGraph = ({ data }) => {
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="date" />
           <YAxis />
-          <Tooltip />
+          <Tooltip labelStyle={{ color: "black" }} />
           <Line
             type="monotone"
             dataKey="close"

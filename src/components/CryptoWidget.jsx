@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { fetchCryptoData } from "../api/cryptoData";
+import { motion } from "framer-motion";
 
 function CryptoWidget() {
   const [cryptoData, setCryptoData] = useState(null);
@@ -16,47 +17,58 @@ function CryptoWidget() {
     getCryptoData();
   }, []);
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
-    <div className="w-full bg-white dark:bg-gray-900 text-black dark:text-white rounded shadow-md">
+    <motion.div
+      className="w-full bg-white dark:bg-gray-900 text-black dark:text-white rounded shadow-md p-6 justify-center items-center flex flex-col"
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+    >
+      <h1 className="text-[24px] text-slate-600 dark:text-white">
+        CRYPTOCURRENCY OVERVIEW
+      </h1>
       {cryptoData && (
-        <div className="flex">
-          <div className="w-1/2">
-            {cryptoData.slice(0, 5).map((crypto) => (
-              <div
-                key={crypto.id}
-                className="flex flex-col justify-center items-center p-4"
-              >
-                <h2 className="text-2xl font-bold">{crypto.name}</h2>
-                <p className="text-lg">
-                  Symbol: {crypto.symbol} | Price: ${crypto.price_usd}
+        <div className="flex flex-wrap">
+          {cryptoData.slice(0, 10).map((crypto, index) => (
+            <motion.div
+              key={crypto.id}
+              className="w-full sm:w-1/2 lg:w-1/3 p-4"
+              variants={itemVariants}
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 200 }}
+            >
+              <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg shadow-lg text-center">
+                <h2 className="text-2xl font-bold text-blue-600">
+                  {crypto.name}
+                </h2>
+                <p className={`text-lg mt-2 `}>
+                  Symbol: {crypto.symbol} | Price: $
+                  {parseFloat(crypto.price_usd)}
                 </p>
                 <p className="text-lg">
-                  Market Cap: ${crypto.market_cap_usd} | 24 Hour Volume: $
-                  {crypto.volume24}
-                </p>
-              </div>
-            ))}
-          </div>
-          <div className="w-1/2">
-            {cryptoData.slice(5, 10).map((crypto) => (
-              <div
-                key={crypto.id}
-                className="flex flex-col justify-center items-center p-4"
-              >
-                <h2 className="text-2xl font-bold">{crypto.name}</h2>
-                <p className="text-lg">
-                  Symbol: {crypto.symbol} | Price: ${crypto.price_usd}
-                </p>
-                <p className="text-lg">
-                  Market Cap: ${crypto.market_cap_usd} | 24 Hour Volume: $
-                  {crypto.volume24}
+                  Market Cap: ${parseFloat(crypto.market_cap_usd)}
                 </p>
               </div>
-            ))}
-          </div>
+            </motion.div>
+          ))}
         </div>
       )}
-    </div>
+    </motion.div>
   );
 }
 

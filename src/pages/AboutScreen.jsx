@@ -2,7 +2,7 @@ import React from "react";
 
 function AboutScreen() {
   return (
-    <div className="flex flex-col justify-center items-center p-10 gap-10 bg-white dark:bg-gray-900 text-black dark:text-white">
+    <div className="flex flex-col justify-start items-center p-10 gap-10 bg-white dark:bg-gray-900 min-h-screen text-black dark:text-white">
       <h1 className="text-[30px]">About Screen</h1>
       <p className="align-middle w-full ">
         MyStock App is a platform for real-time financial data and the latest
@@ -31,28 +31,6 @@ function AboutScreen() {
         sit amet sapien in ante venenatis volutpat. Donec malesuada at odio id
         lacinia. Nam iaculis sapien vitae nibh fringilla, eget varius magna
         lacinia.
-      </p>
-      <p className="align-middle w-full ">
-        Sed eget metus dapibus, finibus libero eget, efficitur velit. Nulla
-        facilisi. Maecenas mattis pulvinar lacinia. Suspendisse est purus,
-        gravida sed neque non, tincidunt egestas erat. Nullam congue, velit at
-        molestie dictum, mi mi vehicula dolor, tempor convallis augue neque at
-        risus. Sed et elit tempor, mollis quam sit amet, fermentum sapien.
-        Vivamus aliquet vestibulum magna nec mattis. Proin diam ex, elementum ac
-        urna in, gravida lobortis nisi. Proin gravida pellentesque nisl vitae
-        semper. Maecenas viverra ultricies lorem, et sagittis justo varius
-        at.Duis a mollis ligula. Donec suscipit ante purus, non feugiat velit
-        placerat a. Cras tincidunt non libero vitae mollis. Nullam et fermentum
-        magna. Sed ut purus tempus, ultrices sapien quis, hendrerit erat. Mauris
-        lacus dui, posuere vel rutrum quis, posuere in quam. Sed nec lacus
-        aliquet, hendrerit purus quis, posuere ante. Curabitur ac bibendum elit.
-        Nunc tempus vestibulum turpis, nec aliquet nibh molestie quis. Integer
-        id ante quis ante luctus finibus. Quisque fermentum vehicula arcu, eget
-        pharetra nisl. Integer eu interdum neque, a sodales magna. Aliquam sit
-        amet orci euismod, fermentum sapien a, tempus ante. Class aptent taciti
-        sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-        Nulla mollis, quam sit amet posuere placerat, ante sapien condimentum
-        dui, et luctus erat risus commodo lorem.
       </p>
     </div>
   );

@@ -43,7 +43,7 @@ function HomePage() {
 
             <VideoPlayer url={"https://www.youtube.com/watch?v=NGaSWrOQrlU"} />
           </div>
-          {/* <CryptoWidget /> */}
+          <CryptoWidget />
         </div>
 
         <NewsContainer />

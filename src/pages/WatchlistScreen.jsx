@@ -34,7 +34,7 @@ function WatchlistScreen() {
   };
 
   return (
-    <div className="p-4 bg-white dark:bg-gray-900 text-black dark:text-white">
+    <div className="p-4 bg-white dark:bg-gray-900 min-h-screen text-black dark:text-white">
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-semibold mb-4">My Watchlist</h1>
         <button
