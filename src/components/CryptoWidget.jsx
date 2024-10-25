@@ -44,7 +44,7 @@ function CryptoWidget() {
       </h1>
       {cryptoData && (
         <div className="flex flex-wrap">
-          {cryptoData.slice(0, 10).map((crypto, index) => (
+          {cryptoData.slice(0, 9).map((crypto, index) => (
             <motion.div
               key={crypto.id}
               className="w-full sm:w-1/2 lg:w-1/3 p-4"

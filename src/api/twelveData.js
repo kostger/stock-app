@@ -18,6 +18,20 @@ export const fetchStockQuote = async (symbol) => {
     throw error;
   }
 };
+export const fetchStockLogo = async (symbol) => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/logo`, {
+      params: {
+        symbol,
+        apikey: API_KEY,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching stock quote:", error);
+    throw error;
+  }
+};
 export const fetchIndividualStockData = async (symbol) => {
   try {
     const response = await axios.get(`${API_BASE_URL}/time_series`, {

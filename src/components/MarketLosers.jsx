@@ -10,14 +10,14 @@ function MarketLosers() {
       <motion.ul>
         {[
           {
-            symbol: "XYZ",
-            name: "XYZ Corp",
+            symbol: "JASUF",
+            name: "Jasmine International Public Co Ltd",
             price: 75.32,
             change: "-8.45 (-10.09%)",
           },
           {
-            symbol: "ABC",
-            name: "ABC Inc",
+            symbol: "SMTC",
+            name: "Lyxor Smart Cash",
             price: 53.21,
             change: "-7.23 (-11.97%)",
           },

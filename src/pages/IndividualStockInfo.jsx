@@ -3,9 +3,9 @@ import { fetchIndividualStockData } from "../api/twelveData";
 import { useParams } from "react-router-dom";
 import { StockGraph } from "../components/StockGraph";
 import StockDataDisplay from "../components/StockDataDisplay";
-import { postWatchlistData } from "../api/watchlistData";
+import { postWatchlistData, fetchWatchlistData } from "../api/watchlistData";
 import AddIcon from "@mui/icons-material/Add";
-import { fetchStockQuote } from "../api/twelveData";
+import { fetchStockQuote, fetchStockLogo } from "../api/twelveData";
 import CheckIcon from "@mui/icons-material/Check";
 import { motion } from "framer-motion";
 import Chatbot from "../components/Chatbot";
@@ -15,6 +15,9 @@ function IndividualStockInfo() {
   const [data, setData] = useState(null);
   const [quoteData, setQuoteData] = useState(null);
   const [addedToWatchlist, setAddedToWatchlist] = useState(false);
+  const [watchlistData, setWatchlistData] = useState([]);
+  const [stockLogo, setStockLogo] = useState(null);
+  const [apiError, setApiError] = useState(false);
 
   useEffect(() => {
     const getStockData = async () => {
@@ -23,7 +26,17 @@ function IndividualStockInfo() {
         setData(data);
         const quoteData = await fetchStockQuote(symbol);
         setQuoteData(quoteData);
+        const watchlistData = await fetchWatchlistData();
+        setWatchlistData(watchlistData);
+        const isAdded = watchlistData.some(
+          (stock) => stock.symbol === quoteData.symbol
+        );
+        setAddedToWatchlist(isAdded);
+        // const logo = await fetchStockLogo(symbol);
+        // setStockLogo(logo);
+        // console.log(logo);
       } catch (error) {
+        setApiError(true);
         console.error("Error fetching stock data:", error);
       }
     };
@@ -41,6 +54,16 @@ function IndividualStockInfo() {
     });
     setAddedToWatchlist(true);
   };
+  function formatNumber(number) {
+    if (number >= 1e9) {
+      return (number / 1e9).toFixed(1) + " billion";
+    } else if (number >= 1e6) {
+      return (number / 1e6).toFixed(1) + " million";
+    } else if (number >= 1e3) {
+      return (number / 1e3).toFixed(1) + " thousand";
+    }
+    return number.toString();
+  }
 
   return (
     <div className="w-full min-h-screen bg-white dark:bg-gray-900 text-black dark:text-white">
@@ -48,6 +71,11 @@ function IndividualStockInfo() {
         {data && quoteData ? (
           <>
             <div className="flex flex-col justify-center items-center mb-4 border rounded-lg shadow-lg bg-gray-100 dark:bg-slate-700 mt-4 p-4 ">
+              {/* <img
+                src={stockLogo?.url}
+                alt="stockLogo"
+                className="rounded-xl"
+              /> */}
               <h1 className="text-2xl md:text-4xl font-bold">
                 {quoteData.name}
               </h1>
@@ -59,9 +87,8 @@ function IndividualStockInfo() {
                   Date: {new Date(data.values[0].datetime).toLocaleDateString()}
                 </p>
                 <p className="text-md md:text-lg">
-                  Open: {data.values[0].open} | High: {data.values[0].high} |
-                  Close: {data.values[0].close} | Volume:{" "}
-                  {data.values[0].volume}
+                  Open: {data.values[0].open} | Close: {data.values[0].close} |
+                  High: {data.values[0].high} | Volume: {data.values[0].volume}
                 </p>
                 <div className="flex justify-center items-center gap-10">
                   <p
@@ -71,6 +98,16 @@ function IndividualStockInfo() {
                   >
                     Change: {parseFloat(quoteData.change)}
                   </p>
+                  {/* <p
+                    style={{
+                      color: parseFloat(quoteData.change) > 0 ? "green" : "red",
+                    }}
+                  >
+                    Market Cap:{" "}
+                    {formatNumber(
+                      parseFloat(quoteData.volume) * parseFloat(quoteData.close)
+                    )}
+                  </p> */}
                   <p
                     style={{
                       color: quoteData.is_market_open ? "green" : "black",
@@ -107,6 +144,7 @@ function IndividualStockInfo() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.3, delay: 0.4 }}
+                disabled={addedToWatchlist}
               >
                 <motion.div
                   key={addedToWatchlist ? "check" : "add"}
@@ -117,7 +155,7 @@ function IndividualStockInfo() {
                 >
                   {addedToWatchlist ? <CheckIcon /> : <AddIcon />}
                 </motion.div>
-                Add To Watchlist
+                {`${addedToWatchlist ? "Added" : "Add"} To Watchlist`}
               </motion.button>
             </motion.div>
             <StockGraph data={data} />

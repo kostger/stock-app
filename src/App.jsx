@@ -9,6 +9,7 @@ import { ScrollBar } from "./components/ScrollBar";
 import AboutScreen from "./pages/AboutScreen";
 import Footer from "./components/Footer";
 import WatchlistScreen from "./pages/WatchlistScreen";
+import { ContactScreen } from "./pages/ContactScreen";
 function App() {
   return (
     <div className="flex flex-col min-h-screen">
@@ -20,6 +21,7 @@ function App() {
           <Route path="/stock/:symbol" element={<IndividualStockInfo />} />
           <Route path="/about" element={<AboutScreen />} />
           <Route path="/watchlist" element={<WatchlistScreen />} />
+          <Route path="/contact" element={<ContactScreen />} />
           <Route path="*" element={<h1>Not Found</h1>} />
         </Routes>
       </main>

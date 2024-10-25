@@ -1,4 +1,3 @@
-// Navbar.jsx
 import React, { useState } from "react";
 import ThemeToggle from "./ThemeToggle";
 import StockInfo from "./StockInfo";
@@ -8,7 +7,9 @@ const Navbar = () => {
   return (
     <nav className="bg-blue-600 dark:bg-slate-700 px-4">
       <div className="container mx-auto flex justify-between items-center">
-        <div className="text-white text-2xl font-bold">MyStocks</div>
+        <a href="/" className="text-white text-2xl font-bold">
+          MyStocks
+        </a>
         <StockInfo />
 
         <div className="hidden md:flex space-x-6 justify-center items-center">
