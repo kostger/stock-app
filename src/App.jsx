@@ -10,6 +10,7 @@ import AboutScreen from "./pages/AboutScreen";
 import Footer from "./components/Footer";
 import WatchlistScreen from "./pages/WatchlistScreen";
 import { ContactScreen } from "./pages/ContactScreen";
+//addedenv
 function App() {
   return (
     <div className="flex flex-col min-h-screen">
