@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 export const Slideshow = ({ images, interval = 3000 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Automatically change images every specified interval
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIndex((prevIndex) =>

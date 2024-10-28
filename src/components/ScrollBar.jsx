@@ -26,10 +26,9 @@ export const ScrollBar = () => {
     { symbol: "VISA", price: 235.89, change: "up" }, // Visa Inc.
   ];
 
-  const scrollRef = useRef(null); // Reference for the scroll container
-  const scrollSpeed = 1; // Adjust the speed of scrolling
+  const scrollRef = useRef(null);
+  const scrollSpeed = 1;
 
-  // Automatically scroll the bar
   useEffect(() => {
     const scrollContainer = scrollRef.current;
     const resetScroll = () => {
@@ -44,11 +43,11 @@ export const ScrollBar = () => {
     const scrollInterval = setInterval(() => {
       if (scrollContainer) {
         scrollContainer.scrollBy(scrollSpeed, 0); // Scrolls horizontally
-        resetScroll(); // Check and reset scroll position
+        resetScroll(); // Check and reset scroll position if needed
       }
-    }, 20); // Adjust the interval for smoother scrolling
+    }, 20);
 
-    return () => clearInterval(scrollInterval); // Clean up on component unmount
+    return () => clearInterval(scrollInterval);
   }, []);
 
   return (
@@ -68,12 +67,12 @@ export const ScrollBar = () => {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             style={{
-              minWidth: "250px", // Set a minimum width for each item
+              minWidth: "250px",
               padding: "10px",
-              border: "1px solid #ccc", // Optional: Border for item
-              marginRight: "10px", // Space between items
-              flexShrink: 0, // Prevent items from shrinking
-              textAlign: "center", // Center align text
+              border: "1px solid #ccc",
+              marginRight: "10px",
+              flexShrink: 0,
+              textAlign: "center",
               display: "flex",
               flexDirection: "row",
               justifyContent: "center",
